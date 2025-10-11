@@ -11,7 +11,7 @@
     "watch": "tsc -w",
     "clean": "rimraf dist",
     "prestart": "npm run clean && npm run build",
-    "start": "func start",
+    "start": "func start --typescript",
     "test": "echo \"No automated tests configured yet\" && exit 1"
   },
   "dependencies": {
