@@ -1,0 +1,16 @@
+{
+  "specversion": "1.0",
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "source": "/services/catalogue",
+  "type": "catalogue.product.upserted",
+  "subject": "products/prod-12345",
+  "time": "2026-10-28T11:00:00.000Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "productId": "prod-12345",
+    "name": "Premium Wireless Headphones",
+    "pricePence": 7999,
+    "description": "Wireless headphones",
+    "updatedAt": "2026-10-28T11:00:00.000Z"
+  }
+}
