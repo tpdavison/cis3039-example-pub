@@ -37,7 +37,21 @@ export async function upsertProductHandler(
     if (!result.success) return badRequest(result.issues);
 
     stage = 'response-mapping';
-    return { status: 200, jsonBody: toProductDto(result.data) };
+    if (result.publication.status === 'unconfirmed') {
+      context.warn('Product saved; event publication unconfirmed', {
+        operation: 'upsert-product', productId: result.data.id, eventId: result.publication.eventId,
+      });
+    }
+    return {
+      status: 200,
+      jsonBody: {
+        product: toProductDto(result.data),
+        publication: result.publication,
+        ...(result.publication.status === 'unconfirmed' ? {
+          warning: 'Product saved; publication is unconfirmed. Do not automatically repeat the write. Inspect saved state and downstream evidence.',
+        } : {}),
+      },
+    };
   } catch {
     context.error('Product API request failed', {
       operation: 'upsert-product', stage, category: 'unexpected',
