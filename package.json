@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit",
     "demo:domain": "npm run build && node dist/scripts/demo-domain.js",
     "demo:list": "npm run build && node dist/scripts/demo-list.js",
+    "demo:upsert": "npm run build && node dist/scripts/demo-upsert.js",
     "watch": "tsc -w",
     "clean": "rimraf dist",
     "prestart": "npm run clean && npm run build",
