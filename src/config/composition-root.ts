@@ -1,6 +1,7 @@
 // The composition root connects concrete infrastructure adapters to application
 // use cases, keeping configuration and construction out of business logic.
 import type { ListProductsDeps } from '../app/list-products';
+import type { UpsertProductDeps } from '../app/upsert-product';
 import type { ProductRepo } from '../domain/product-repo';
 import { FakeProductRepo } from '../infra/fake-product-repo';
 
@@ -16,4 +17,9 @@ export const getProductRepo = (): ProductRepo => {
 
 export const createListProductsDeps = (): ListProductsDeps => ({
   productRepo: getProductRepo(),
+});
+
+export const createUpsertProductDeps = (): UpsertProductDeps => ({
+  productRepo: getProductRepo(),
+  now: () => new Date(),
 });
